@@ -138,3 +138,6 @@ dmypy.json
 *.xlsx
 *.numbers
 *.csv
+
+# Chromedriver
+/chromedriver.exe
