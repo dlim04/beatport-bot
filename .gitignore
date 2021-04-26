@@ -127,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# IntelliJ files
+.idea/
+
+# Config files
+*.ini
+
+# Spreadsheet files
+*.xlsx
+*.numbers
+*.csv
