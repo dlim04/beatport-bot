@@ -61,7 +61,7 @@ class BeatportBot:
                 break
 
         if len(track_years) >= 2:
-            if track_years[0] == 2017:
+            if track_years[0] >= 2017:
                 new_release = True
 
         return new_release, len(tracks)
