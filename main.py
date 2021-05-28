@@ -1,5 +1,5 @@
 from re import sub
-from typing import List, Union, Any
+from typing import List, Union, Any, Optional
 
 from progressbar import progressbar
 from selenium.common.exceptions import WebDriverException
@@ -53,13 +53,15 @@ def main():
 
     i: int
     url: str
+    error_message: Optional[Exception] = None
     for i, url in enumerate(progressbar(urls)):
         try:
             label_data: List[Union[str, bool, int]] = [url, beatport_bot.get_record_label_name(url)]
             label_data.extend(beatport_bot.has_new_releases(url))
             data.append(label_data)
-        except (KeyboardInterrupt, WebDriverException):
+        except (KeyboardInterrupt, WebDriverException) as error:
             error_occurred = True
+            error_message = error
             config.save_file_path = beatport_csv.write_csv(config.save_file_path, data)
 
             completed_urls: List[List[str]] = []
@@ -82,6 +84,10 @@ def main():
         config.save_file_path = beatport_csv.write_csv(config.save_file_path, data)
 
     print('\n\nCompleted %d of %d labels' % (i + 1, len(urls)))
+
+    if error_occurred:
+        print(error_message)
+
     input('Press enter to exit...')
 
 
