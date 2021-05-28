@@ -60,15 +60,8 @@ class BeatportBot:
             if counter == 2:
                 break
 
-        twenty_nineteens: int = track_years.count(2019)
-        twenty_eighteens: int = track_years.count(2018)
-        count: int = twenty_nineteens + twenty_eighteens
-
-        if len(track_years) != 0:
-            if track_years[0] == 2020:
-                new_release = True
-
-            elif count == 2:
+        if len(track_years) >= 2:
+            if track_years[0] == 2017:
                 new_release = True
 
         return new_release, len(tracks)
