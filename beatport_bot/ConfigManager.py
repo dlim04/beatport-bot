@@ -78,10 +78,10 @@ class ConfigManager:
         if not isinstance(chromedriver_file_path, str):
             raise TypeError('file_path must be a string')
 
-        invalid_characters: List[str] = ['<', '>', ':', '"', '/', '|', '?', '*', '%']
+        invalid_characters: List[str] = ['<', '>', ':', '"', '|', '?', '*', '%']
         character: str
         if [character for character in invalid_characters if (character in chromedriver_file_path)]:
-            raise ValueError('file_path cannot contain any of the following invalid characters: <, >, :, ", /, |, ?, *')
+            raise ValueError('file_path cannot contain any of the following invalid characters: <, >, :, ", |, ?, *')
 
         self.__chromedriver_file_path = chromedriver_file_path
         self.__update_configuration_file()

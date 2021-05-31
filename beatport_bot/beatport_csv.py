@@ -17,10 +17,10 @@ def validate_file_path(file_path: str) -> None:
     if file_path.count('.csv') != 1:
         raise ValueError("file_path must can only contain substring '.csv' once")
 
-    invalid_characters: List[str] = ['<', '>', ':', '"', '/', '|', '?', '*']
+    invalid_characters: List[str] = ['<', '>', ':', '"', '|', '?', '*']
     character: str
     if [character for character in invalid_characters if (character in file_path)]:
-        raise ValueError('file_path cannot contain any of the following invalid characters: <, >, :, ", /, |, ?, *')
+        raise ValueError('file_path cannot contain any of the following invalid characters: <, >, :, ", |, ?, *')
 
 
 def import_urls(file_path: str) -> List[str]:
